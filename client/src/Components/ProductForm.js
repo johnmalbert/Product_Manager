@@ -40,7 +40,6 @@ const ProductForm = () => {
                 <button className="btn btn-primary" type="submit">Enter Product</button>
             </form>
             </div>
-            <h1>{title} - {price} - {description}</h1>
         </div>
     )
 }
