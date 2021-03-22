@@ -16,7 +16,12 @@ const ProductForm = () => {
             price,
             description
         })
-            .then(res => console.log(res))
+            .then(res => {
+                setTitle("");
+                setPrice("");
+                setDescription("");
+                console.log(res);
+            })
             .catch(err => console.log(err))
     }
 

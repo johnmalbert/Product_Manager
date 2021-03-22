@@ -8,6 +8,14 @@ const Detail = props => {
         axios.get("http://localhost:8000/api/products/" + props.id)
             .then(res => setProduct(res.data))
     }, [])
+
+    const { removeFromDom } = props;
+    const deleteProduct = (productId) => {
+        axios.delete('http://localhost:8000/api/products/' + productId)
+            .then(res => {
+                removeFromDom(productId)
+            })
+    }
     return (
         <div>
             <div className="container">
@@ -15,8 +23,9 @@ const Detail = props => {
                 <h3>Title: {product.title}</h3>
                 <h3>Price: ${product.price}</h3>
                 <h3 className="mb-5">Description: {product.description}</h3>
-
-                <Link to = "/products">Return to Main</Link>
+                <button className="btn btn-warning"><Link style={{color: 'white'}} to={"/products/" + product._id + "/update"}>Update Product</Link></button> | 
+                <button className="btn btn-danger"> Delete Product </button> |
+                <button className="btn btn-success"> <Link style={{color: 'white'}} to = "/">Return to Main</Link></button>
             </div>
         </div>
     )
